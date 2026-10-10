@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Success Platform</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Student Success Platform</h1>
+    <p class="sub">Seven data sources joined into one student view, scored and flagged for intervention.</p>
+  </div>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Search name or ID" aria-label="Search students">
+    <select id="fDept" aria-label="Department"></select>
+    <select id="fRisk" aria-label="Risk flag">
+      <option value="">All risk flags</option>
+      <option value="acad">Academic risk</option>
+      <option value="place">Placement risk</option>
+      <option value="any">Any risk</option>
+      <option value="none">No risk</option>
+    </select>
+    <select id="fSeg" aria-label="Segment"></select>
+    <button id="reset" class="ghost">Clear filters</button>
+  </div>
+</header>
+
+<main>
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid">
+    <article class="panel">
+      <h2>Success Score distribution</h2>
+      <div id="histo" class="histo"></div>
+    </article>
+    <article class="panel">
+      <h2>Risk by department</h2>
+      <div id="deptRisk"></div>
+    </article>
+    <article class="panel wide">
+      <h2>Academic strength vs placement readiness</h2>
+      <p class="hint">Each dot is a student. Top-left = strong academics, weak placement readiness. Click a dot to open the student.</p>
+      <div id="scatter"></div>
+    </article>
+    <article class="panel">
+      <h2>Student segments</h2>
+      <p class="hint">Click a segment to filter the list.</p>
+      <div id="segs"></div>
+    </article>
+    <article class="panel wide">
+      <h2>What the data says</h2>
+      <ul id="insights" class="insights"></ul>
+    </article>
+  </section>
+
+  <section class="panel">
+    <div class="rowhead">
+      <h2>Students <span id="count"></span></h2>
+      <button id="export">Export at-risk list (CSV)</button>
+    </div>
+    <div class="tablewrap">
+      <table id="tbl">
+        <thead><tr>
+          <th data-k="name">Student</th><th data-k="dept">Dept</th><th data-k="score">Success Score</th>
+          <th data-k="acad">Academic</th><th data-k="att">Attendance</th><th data-k="place">Placement</th>
+          <th data-k="eng">Engagement</th><th>Flags</th><th>Segment</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel note">
+    <h2>Data integration and quality</h2>
+    <div id="dq"></div>
+    <h2>How the Success Score works</h2>
+    <div id="method"></div>
+  </section>
+</main>
+
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <button id="close" class="ghost" aria-label="Close">Close</button>
+  <div id="detail"></div>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>
